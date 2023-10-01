@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float acceleration;
@@ -34,9 +32,13 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Sun"))
         {
+            CelestialHandler celestialHandler = other.GetComponent<CelestialHandler>();
+            Debug.Log(other.gameObject);
+            Debug.Log(celestialHandler);
             float distance = Vector2.Distance(transform.position, other.transform.position);
             Vector2 direction = (transform.position - other.transform.position).normalized;
-            playerRb.AddForce(-direction / distance * distance * 100);
+            playerRb.AddForce(-direction / (distance * distance) * celestialHandler.GetMass());
+            Debug.Log(celestialHandler.GetMass());
         }
     }
 }
