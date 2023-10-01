@@ -198,6 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   celestialSOSetup:
     celestialSO: {fileID: 11400000, guid: 858b3e788131c7d4c8ccf5c4729e81ff, type: 2}
+  circleCollider2D: {fileID: 1377601005427478331}
 --- !u!1 &7777078663327421187
 GameObject:
   m_ObjectHideFlags: 0

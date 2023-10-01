@@ -32,13 +32,11 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Sun"))
         {
-            CelestialHandler celestialHandler = other.GetComponent<CelestialHandler>();
-            Debug.Log(other.gameObject);
-            Debug.Log(celestialHandler);
+            CelestialHandler celestialHandler = other.GetComponentInParent<CelestialHandler>();
             float distance = Vector2.Distance(transform.position, other.transform.position);
             Vector2 direction = (transform.position - other.transform.position).normalized;
-            playerRb.AddForce(-direction / (distance * distance) * celestialHandler.GetMass());
-            Debug.Log(celestialHandler.GetMass());
+
+            playerRb.AddForce(-direction / (distance * distance) * GameManager.gravitance * celestialHandler.GetMass());
         }
     }
 }
