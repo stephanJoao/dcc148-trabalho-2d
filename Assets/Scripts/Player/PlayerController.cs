@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
-        acceleration = 10.0f;
+        acceleration = 20.0f;
         speedX = 0;
         speedY = 0;
     }
