@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Sun1
   m_EditorClassIdentifier: 
   range: 100
-  mass: 100
+  mass: 10
   color: {r: 0, g: 0, b: 0, a: 1}
+  maxSpeedToDie: 0

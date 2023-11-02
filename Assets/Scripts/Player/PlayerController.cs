@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float acceleration;
     private float speedX;
     private float speedY;
+    private float speedXY;
 
     private Rigidbody2D playerRb;
 
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
         acceleration = 10.0f;
         speedX = 0;
         speedY = 0;
+        speedXY = 0;
     }
 
     // Update is called once per frame
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         speedX = Input.GetAxis("Horizontal") * acceleration;
         speedY = Input.GetAxis("Vertical") * acceleration;
+        speedXY = Mathf.Abs(Mathf.Sqrt(playerRb.velocity.x * playerRb.velocity.x + playerRb.velocity.y * playerRb.velocity.y));
 
         playerRb.AddForce(new Vector2(speedX, speedY));
     }
@@ -37,6 +40,32 @@ public class PlayerController : MonoBehaviour
             Vector2 direction = (transform.position - other.transform.position).normalized;
 
             playerRb.AddForce(-direction / (distance * distance) * GameManager.gravitance * celestialHandler.GetMass());
+            
+            celestialHandler.SetMaxSpeedToDie(celestialHandler.GetMass());
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        
+        if (other.gameObject.tag == "SunObject")
+        {
+            Debug.Log("SunObject");
+			// decrease mass of the sun
+			/*CelestialHandler celestialHandler = other.gameObject.GetComponentInParent<CelestialHandler>();
+            celestialHandler.SetMass(celestialHandler.GetMass() - 1);
+            celestialHandler.SetMaxSpeedToDie(celestialHandler.GetMass());
+            Destroy(other.gameObject);*/
+
+			CelestialHandler celestialHandler = other.gameObject.GetComponentInParent<CelestialHandler>();
+            float speedPercentual = speedXY / celestialHandler.GetMaxSpeedToDie();
+            if(speedPercentual > 0.5)
+                Destroy(celestialHandler.gameObject);
+            else
+            {
+                celestialHandler.SetMass(celestialHandler.GetMass() - (celestialHandler.GetMass() * speedPercentual));
+            }
+			
         }
     }
 }

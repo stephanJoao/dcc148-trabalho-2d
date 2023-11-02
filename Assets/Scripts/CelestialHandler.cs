@@ -9,6 +9,7 @@ public class CelestialHandler : MonoBehaviour
     private MeshRenderer meshRenderer;
 
     private float mass;
+    private float maxSpeedToDie;
 
     private void Start()
     {
@@ -17,11 +18,29 @@ public class CelestialHandler : MonoBehaviour
         meshRenderer.sharedMaterial.color = celestialSOSetup.celestialSO.color;
         circleCollider2D.radius = celestialSOSetup.celestialSO.range;
         mass = celestialSOSetup.celestialSO.mass;
+        
+        maxSpeedToDie = celestialSOSetup.celestialSO.maxSpeedToDie;
+        
     }
 
     public float GetMass()
     {
         return mass;
+    }
+
+    public float SetMass(float newMass)
+    {
+        return mass = newMass;
+    }
+    
+    public float SetMaxSpeedToDie(float mass)
+    {
+        return maxSpeedToDie = mass * 5;
+    }
+    
+    public float GetMaxSpeedToDie()
+    {
+        return maxSpeedToDie;
     }
 }
 
