@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3897a22d33a68d04bb372f5667030653, type: 3}
   m_Name: Sun1
   m_EditorClassIdentifier: 
-  range: 100
-  mass: 1
+  size: 14
+  mass: 30
+  range: 10
   color: {r: 0.8679245, g: 0.6419366, b: 0.6419366, a: 1}
+  maxSpeedToDie: 0
