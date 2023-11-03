@@ -6,6 +6,7 @@ public class CelestialHandler : MonoBehaviour
     [SerializeField] CelestialSOSetup celestialSOSetup;
 
     [SerializeField] CircleCollider2D circleCollider2D;
+    [SerializeField] Light light;
     private MeshRenderer meshRenderer;
 
     private float mass;
@@ -14,11 +15,11 @@ public class CelestialHandler : MonoBehaviour
     private void Start()
     {
         meshRenderer = GetComponent<MeshRenderer>();
-
-        meshRenderer.sharedMaterial.color = celestialSOSetup.celestialSO.color;
+        light.color = celestialSOSetup.celestialSO.color;
+        meshRenderer.material.SetColor("_EmissionColor", celestialSOSetup.celestialSO.color);
         circleCollider2D.radius = celestialSOSetup.celestialSO.range;
         mass = celestialSOSetup.celestialSO.mass;
-        
+
         maxSpeedToDie = celestialSOSetup.celestialSO.maxSpeedToDie;
         
     }
@@ -35,7 +36,7 @@ public class CelestialHandler : MonoBehaviour
     
     public float SetMaxSpeedToDie(float mass)
     {
-        return maxSpeedToDie = mass * 5;
+        return maxSpeedToDie = mass * 50;
     }
     
     public float GetMaxSpeedToDie()

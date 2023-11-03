@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
-        acceleration = 10.0f;
+        acceleration = 20.0f;
         speedX = 0;
         speedY = 0;
         speedXY = 0;
@@ -47,23 +47,23 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        
         if (other.gameObject.tag == "SunObject")
         {
             Debug.Log("SunObject");
-			// decrease mass of the sun
-			/*CelestialHandler celestialHandler = other.gameObject.GetComponentInParent<CelestialHandler>();
-            celestialHandler.SetMass(celestialHandler.GetMass() - 1);
-            celestialHandler.SetMaxSpeedToDie(celestialHandler.GetMass());
-            Destroy(other.gameObject);*/
 
 			CelestialHandler celestialHandler = other.gameObject.GetComponentInParent<CelestialHandler>();
             float speedPercentual = speedXY / celestialHandler.GetMaxSpeedToDie();
+
+			Debug.Log(speedXY); 
+			Debug.Log(celestialHandler.GetMaxSpeedToDie());
+
             if(speedPercentual > 0.5)
                 Destroy(celestialHandler.gameObject);
             else
             {
+				//float newScale = other.gameObject.transform.localScale.x - (1/(other.gameObject.transform.localScale.x * 0.1f));
                 celestialHandler.SetMass(celestialHandler.GetMass() - (celestialHandler.GetMass() * speedPercentual));
+				//other.gameObject.transform.localScale = new Vector3(newScale, newScale, newScale);
             }
 			
         }
