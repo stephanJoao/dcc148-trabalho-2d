@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 5849470417403800846}
   - component: {fileID: 1395795181137184974}
   m_Layer: 0
-  m_Name: Celestial
+  m_Name: Sun1
   m_TagString: Sun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
