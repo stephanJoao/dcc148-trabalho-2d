@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2242240853698493081}
   m_Layer: 0
   m_Name: Planet2
-  m_TagString: Sun
+  m_TagString: PlanetObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 2866661764201760816}
   m_Layer: 0
   m_Name: Range
-  m_TagString: Untagged
+  m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

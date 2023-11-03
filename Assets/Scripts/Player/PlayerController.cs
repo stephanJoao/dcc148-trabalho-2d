@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float acceleration;
     private float speedX;
     private float speedY;
+    private float playerMagnitude;
     private float speedXY;
 
     private Rigidbody2D playerRb;
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody2D>();
         acceleration = 20.0f;
+        playerMagnitude = 70.0f;
         speedX = 0;
         speedY = 0;
         speedXY = 0;
@@ -26,17 +28,22 @@ public class PlayerController : MonoBehaviour
     {
         speedX = Input.GetAxis("Horizontal") * acceleration;
         speedY = Input.GetAxis("Vertical") * acceleration;
-        speedX = Mathf.Clamp(speedX, 0, 70);
-        speedY = Mathf.Clamp(speedY, 0, 70);
+
         speedXY = Mathf.Abs(Mathf.Sqrt(playerRb.velocity.x * playerRb.velocity.x + playerRb.velocity.y * playerRb.velocity.y));
-
         
-
         playerRb.AddForce(new Vector2(speedX, speedY));
+        
+        // limit player rigidbody velocity
+        if (playerRb.velocity.magnitude > playerMagnitude)
+        {
+            playerRb.velocity = playerRb.velocity.normalized * playerMagnitude;
+        }
+
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
+        // collision with trigger range (gravity)
         if (other.CompareTag("Sun"))
         {
             CelestialHandler celestialHandler = other.GetComponentInParent<CelestialHandler>();
@@ -46,8 +53,8 @@ public class PlayerController : MonoBehaviour
             
             celestialHandler.SetMaxSpeedToDie(celestialHandler.GetMass());
         }
-
-        /*if (other.CompareTag("Planet"))
+        // collision with trigger range (gravity)
+        if (other.CompareTag("Planet"))
         {
             CelestialHandler celestialHandler = other.GetComponentInParent<CelestialHandler>();
             Vector2 direction = (transform.position - other.transform.position).normalized;
@@ -55,7 +62,7 @@ public class PlayerController : MonoBehaviour
             playerRb.AddForce(-direction * GameManager.gravitance * celestialHandler.GetMass());
 
             celestialHandler.SetMaxSpeedToDie(celestialHandler.GetMass());
-        }*/
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -67,7 +74,6 @@ public class PlayerController : MonoBehaviour
             Debug.Log(speedXY);
             
             float speedPercentual = speedXY / 1000.0f;
-
                         
             celestialHandler.SetSize(celestialHandler.GetSize() - (celestialHandler.GetSize() * speedPercentual));
 
