@@ -5,7 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Sun
+<<<<<<< Updated upstream
   - SunObject
+=======
+  - Planet
+  - Grid
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
