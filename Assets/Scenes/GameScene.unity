@@ -908,6 +908,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9628db894161a304da8e42e5dfa59b54, type: 2}
   - {fileID: 11400000, guid: e96aec61f45b6ad43bc14872630b6728, type: 2}
   gapBetweenTiles: 500
+  tilesNumber: 0
   grid: {fileID: 134684155}
   player: {fileID: 0}
 --- !u!114 &2016004833

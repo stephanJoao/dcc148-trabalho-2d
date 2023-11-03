@@ -8,19 +8,28 @@ public class CelestialTilesSpawnHandler : MonoBehaviour
     [SerializeField] List<CelestialTilesSO> tiles;
 
     [SerializeField] float gapBetweenTiles;
+    [SerializeField] int tilesNumber;
 
     [SerializeField] Grid grid;
 
-    // Start is called before the first frame update
+    [SerializeField] GameObject player;
+
     void Start()
     {
-        tiles = new List<CelestialTilesSO>();
+        grid = GameObject.FindGameObjectWithTag("Grid").GetComponent<Grid>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        StartCoroutine(SpawnTilesCoroutine());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator SpawnTilesCoroutine()
     {
-        
+        for(tilesNumber = 0; tilesNumber < tiles.Count; tilesNumber++)
+        {
+            var tile = tiles[UnityEngine.Random.Range(0, tiles.Capacity)];
+            var pos = grid.GetCellCenterWorld(grid.LocalToCell(player.transform.position *tilesNumber * 100));
+            Instantiate(tile.celestialTile, pos, Quaternion.identity);
+        }
+        yield return null;  
     }
 }
 
