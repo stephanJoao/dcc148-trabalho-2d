@@ -300,7 +300,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 04a879fb16c98a44389fa51f4dcb50dd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -901,8 +901,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fadc20622b5b78249aa0b52fb7b7f037, type: 2}
   - {fileID: 11400000, guid: 9628db894161a304da8e42e5dfa59b54, type: 2}
   - {fileID: 11400000, guid: e96aec61f45b6ad43bc14872630b6728, type: 2}
-  gapBetweenTiles: 50
-  tilesNumber: 0
+  gapBetweenTiles: 100
+  tilesNumber: 5
   grid: {fileID: 134684155}
   player: {fileID: 0}
 --- !u!114 &2016004833

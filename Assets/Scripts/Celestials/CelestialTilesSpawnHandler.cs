@@ -23,10 +23,10 @@ public class CelestialTilesSpawnHandler : MonoBehaviour
 
     IEnumerator SpawnTilesCoroutine()
     {
-        for(tilesNumber = 0; tilesNumber < tiles.Count; tilesNumber++)
+        for(var i = 0; i < tilesNumber; i++)
         {
             var tile = tiles[UnityEngine.Random.Range(0, tiles.Capacity)];
-            var pos = grid.GetCellCenterWorld(grid.LocalToCell(player.transform.position *tilesNumber * 100));
+            var pos = grid.GetCellCenterWorld(grid.LocalToCell(new Vector3(player.transform.position.x + (gapBetweenTiles * i), player.transform.position.y, 1)));
             Instantiate(tile.celestialTile, pos, Quaternion.identity);
         }
         yield return null;  
@@ -34,7 +34,7 @@ public class CelestialTilesSpawnHandler : MonoBehaviour
 }
 
 [Serializable]
-public class CeletialTileSetup
+public class CelestialTileSetup
 {
     public CelestialTilesSO celestialTilesSO;
 
