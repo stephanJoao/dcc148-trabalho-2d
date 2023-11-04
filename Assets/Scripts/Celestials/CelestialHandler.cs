@@ -13,6 +13,8 @@ public class CelestialHandler : MonoBehaviour
     [SerializeField] private float maxSize;
     [SerializeField] private float mass;
 
+    private Color color;
+
     private void Start()
     {
         meshRenderer = GetComponent<MeshRenderer>();
@@ -22,6 +24,7 @@ public class CelestialHandler : MonoBehaviour
         mass = celestialSOSetup.celestialSO.mass;
         circleCollider2D.radius = celestialSOSetup.celestialSO.range;
         light.color = celestialSOSetup.celestialSO.color;
+        color = celestialSOSetup.celestialSO.color;
 
         transform.localScale = new Vector3(maxSize, maxSize, maxSize);
 
@@ -56,6 +59,11 @@ public class CelestialHandler : MonoBehaviour
     {
         mass = newMass;
     }    
+
+    public Color GetColor()
+    {
+        return color;
+    }
 }
 
 [System.Serializable]

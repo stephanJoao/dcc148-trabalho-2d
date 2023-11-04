@@ -7,9 +7,15 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D playerRb;
     [SerializeField] private float acceleration;
+
+    [SerializeField] ParticleSystem[] collisionParticles;
+    [SerializeField] Material[] particleMaterials;
+
     private float accelerationX;
     private float accelerationY;
     private float playerMaxMagnitude;
+    private float playerMinMagnitudePercentual;
+
     private float minimumImpulse;
 
     // Start is called before the first frame update
@@ -20,6 +26,7 @@ public class PlayerController : MonoBehaviour
         accelerationX = 0;
         accelerationY = 0;
         playerMaxMagnitude = 80.0f;
+        playerMinMagnitudePercentual = 0.20f;
         minimumImpulse = 45.0f;
     }
 
@@ -28,9 +35,9 @@ public class PlayerController : MonoBehaviour
     {
         accelerationX = Input.GetAxis("Horizontal") * acceleration;
         accelerationY = Input.GetAxis("Vertical") * acceleration;
-                
+
         playerRb.AddForce(new Vector2(accelerationX, accelerationY));
-        
+
         // limit player rigidbody velocity
         if (playerRb.velocity.magnitude > playerMaxMagnitude)
         {
@@ -45,7 +52,7 @@ public class PlayerController : MonoBehaviour
         {
             CelestialHandler celestialHandler = other.GetComponentInParent<CelestialHandler>();
             Vector2 direction = (transform.position - other.transform.position).normalized;
-               
+
             playerRb.AddForce(-direction * celestialHandler.GetMass());
         }
 
@@ -59,6 +66,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private int counter = 0;
     private void OnCollisionEnter2D(Collision2D other)
     {
         // collision with planet (destruction)
@@ -97,7 +105,16 @@ public class PlayerController : MonoBehaviour
             }
 
 
-        }        
+            if (counter >= particleMaterials.Length) counter = 0;
+            else
+            {
+                collisionParticles[counter].GetComponent<Renderer>().material = particleMaterials[counter];
+                particleMaterials[counter].SetColor("_Color", celestialHandler.GetColor());
+                collisionParticles[counter].Play();
+                counter++;
+            }
+
+        }
     }
 
     private void OnCollisionStay2D(Collision2D other)
