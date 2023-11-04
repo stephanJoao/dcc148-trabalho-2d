@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private float accelerationX;
     private float accelerationY;
     private float playerMaxMagnitude;
-    private float playerMinMagnitudePercentual;
+    private float minimumImpulse;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
         accelerationX = 0;
         accelerationY = 0;
         playerMaxMagnitude = 80.0f;
-        playerMinMagnitudePercentual = 0.20f;
+        minimumImpulse = 45.0f;
     }
 
     // Update is called once per frame
@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
             //Debug.Log(totalImpulse);
 
             // check minimum impulse 
-            if (true)
+            if (totalImpulse > minimumImpulse)
             {
                 // reduce planet size by one quarter of how fast percentually the player is                                    
                 celestialHandler.SetSize(celestialHandler.GetSize() - (totalImpulse * 0.025f));

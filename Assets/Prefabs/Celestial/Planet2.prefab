@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3700885369097009861}
   - component: {fileID: 228136311736573213}
   - component: {fileID: 2242240853698493081}
+  - component: {fileID: 8559820718043214840}
   m_Layer: 0
   m_Name: Planet2
   m_TagString: PlanetObject
@@ -138,6 +139,23 @@ MonoBehaviour:
     celestialSO: {fileID: 11400000, guid: c947dc039f1002645967dce6b660dcff, type: 2}
   circleCollider2D: {fileID: 2866661764201760816}
   light: {fileID: 112560942195606605}
+  size: 0
+  maxSize: 0
+  mass: 0
+--- !u!114 &8559820718043214840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706397188060425888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc7d70d6a40b596459c795e1c9030fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sun: {fileID: 0}
+  orbitSpeed: 0
 --- !u!1 &5273701608319823679
 GameObject:
   m_ObjectHideFlags: 0
