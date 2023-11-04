@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private float accelerationX;
     private float accelerationY;
     private float playerMaxMagnitude;
-    private float playerMinMagnitudePercentual;
+    private float minimumImpulse;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
         accelerationX = 0;
         accelerationY = 0;
         playerMaxMagnitude = 80.0f;
-        playerMinMagnitudePercentual = 0.20f;
+        minimumImpulse = 45.0f;
     }
 
     // Update is called once per frame
@@ -36,8 +36,6 @@ public class PlayerController : MonoBehaviour
         {
             playerRb.velocity = playerRb.velocity.normalized * playerMaxMagnitude;
         }
-
-        Debug.Log(GameManager.instance.GetPlayerScore());
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -68,27 +66,36 @@ public class PlayerController : MonoBehaviour
         {
 			CelestialHandler celestialHandler = other.gameObject.GetComponentInParent<CelestialHandler>();
                         
-            // get percentage of current velocity magnitude in relation to max velocity magnitude
-            float magnitudePercentual = playerRb.velocity.magnitude / playerMaxMagnitude;
+            
+            // calculate impulse of collision
+            ContactPoint2D[] contacts = new ContactPoint2D[other.contactCount];
+            other.GetContacts(contacts);
+            float totalImpulse = 0;
+            foreach (ContactPoint2D contact in contacts)
+            {
+                totalImpulse += contact.normalImpulse;
+            }
+            //Debug.Log(totalImpulse);
 
-            // check minimum magnitude percentual for damage
-            if (magnitudePercentual > playerMinMagnitudePercentual)
+            // check minimum impulse 
+            if (totalImpulse > minimumImpulse)
             {
                 // reduce planet size by one quarter of how fast percentually the player is                                    
-                celestialHandler.SetSize(celestialHandler.GetSize() - (celestialHandler.GetSize() * magnitudePercentual * 0.25f));
-                celestialHandler.SetMass(celestialHandler.GetMass() - (celestialHandler.GetMass() * magnitudePercentual * 0.25f));
+                celestialHandler.SetSize(celestialHandler.GetSize() - (totalImpulse * 0.025f));
+                celestialHandler.SetMass(celestialHandler.GetMass() - (totalImpulse * 0.025f));
                 // add score to player
-                GameManager.instance.AddScore((celestialHandler.GetMass() * magnitudePercentual * 0.25f));
+                GameManager.instance.AddScore((totalImpulse * 0.25f));
             }
 
             // destroys planet if it's size is less than 40% of it's original size
             if (celestialHandler.GetSize() < 0.40f * celestialHandler.GetMaxSize())
             {
-                // add score to player
+                // add score to player (rest of planet's mass)
                 GameManager.instance.AddScore(celestialHandler.GetMass());
                 // destroy planet
                 Destroy(celestialHandler.gameObject);
             }
+
 
         }        
     }
