@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Sun1
   m_EditorClassIdentifier: 
   size: 16
-  mass: 160
+  mass: 140
   range: 8
   color: {r: 0.375534, g: 0.8376993, b: 0.9150943, a: 1}

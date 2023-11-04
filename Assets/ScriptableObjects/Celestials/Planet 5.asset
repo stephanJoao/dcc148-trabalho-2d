@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3897a22d33a68d04bb372f5667030653, type: 3}
   m_Name: Planet 5
   m_EditorClassIdentifier: 
-  size: 5
-  mass: 3
-  range: 2
+  size: 11
+  mass: 110
+  range: 4
   color: {r: 0.3201307, g: 0.06897472, b: 0.4716981, a: 0}
-  maxSpeedToDie: 0

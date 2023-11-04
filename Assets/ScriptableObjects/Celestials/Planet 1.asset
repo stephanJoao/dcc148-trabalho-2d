@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 10
   mass: 100
-  range: 5
-  color: {r: 0.22764327, g: 0.53724086, b: 0.8207547, a: 0}
+  range: 4
+  color: {r: 0.15268904, g: 0.8679245, b: 0.12691349, a: 0}

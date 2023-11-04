@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Sun
+  - SunObject
+  - Grid
+  - Planet
+  - PlanetObject
+  - PauseScreenObject
+  - ScoreTextObject
+  - InitialTextObject
   layers:
   - Default
   - TransparentFX
