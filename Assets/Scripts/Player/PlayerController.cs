@@ -1,26 +1,25 @@
 
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float acceleration;
+    private Rigidbody2D playerRb;
+
     private float speedX;
     private float speedY;
-    private float playerMagnitude;
-    private float speedXY;
-
-    private Rigidbody2D playerRb;
+    private float playerMaxMagnitude;
 
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
         acceleration = 20.0f;
-        playerMagnitude = 70.0f;
+        playerMaxMagnitude = 70.0f;
         speedX = 0;
         speedY = 0;
-        speedXY = 0;
     }
 
     // Update is called once per frame
@@ -28,17 +27,14 @@ public class PlayerController : MonoBehaviour
     {
         speedX = Input.GetAxis("Horizontal") * acceleration;
         speedY = Input.GetAxis("Vertical") * acceleration;
-
-        speedXY = Mathf.Abs(Mathf.Sqrt(playerRb.velocity.x * playerRb.velocity.x + playerRb.velocity.y * playerRb.velocity.y));
         
         playerRb.AddForce(new Vector2(speedX, speedY));
         
         // limit player rigidbody velocity
-        if (playerRb.velocity.magnitude > playerMagnitude)
+        if (playerRb.velocity.magnitude > playerMaxMagnitude)
         {
-            playerRb.velocity = playerRb.velocity.normalized * playerMagnitude;
+            playerRb.velocity = playerRb.velocity.normalized * playerMaxMagnitude;
         }
-
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -53,6 +49,7 @@ public class PlayerController : MonoBehaviour
             
             celestialHandler.SetMaxSpeedToDie(celestialHandler.GetMass());
         }
+
         // collision with trigger range (gravity)
         if (other.CompareTag("Planet"))
         {
@@ -67,26 +64,19 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "SunObject")
+        // collision with planet (destruction)
+        if (other.gameObject.tag == "PlanetObject")
         {
 			CelestialHandler celestialHandler = other.gameObject.GetComponentInParent<CelestialHandler>();
-            
-            Debug.Log(speedXY);
-            
-            float speedPercentual = speedXY / 1000.0f;
                         
-            celestialHandler.SetSize(celestialHandler.GetSize() - (celestialHandler.GetSize() * speedPercentual));
+            float magnitudePercentual = playerRb.velocity.magnitude / playerMaxMagnitude;
+                        
+            celestialHandler.SetSize(celestialHandler.GetSize() - (celestialHandler.GetSize() * magnitudePercentual * 0.25f));
 
             if(celestialHandler.GetSize() < 0.5 * celestialHandler.GetMaxSize())
             {
                 Destroy(celestialHandler.gameObject);
             }
-
-            //if(speedPercentual > 0.5)
-            //Destroy(celestialHandler.gameObject);
-            //float newScale = other.gameObject.transform.localScale.x - (1/(other.gameObject.transform.localScale.x * 0.1f));
-
-
 
         }
     }

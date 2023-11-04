@@ -8,6 +8,10 @@ TagManager:
   - SunObject
   - Grid
   - Planet
+<<<<<<< Updated upstream
+=======
+  - PlanetObject
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
