@@ -7,7 +7,9 @@ public class CelestialTilesSpawnHandler : MonoBehaviour
 {
     [SerializeField] List<CelestialTilesSO> tiles;
 
-    [SerializeField] float gapBetweenTiles;
+    [SerializeField] float gapBetweenTilesX;
+    [SerializeField] float gapBetweenTilesY;
+
     [SerializeField] int tilesNumber;
 
     [SerializeField] Grid grid;
@@ -23,11 +25,18 @@ public class CelestialTilesSpawnHandler : MonoBehaviour
 
     IEnumerator SpawnTilesCoroutine()
     {
+        var j = 0;
         for(var i = 0; i < tilesNumber; i++)
         {
+            if(i % 5 == 0)
+            {
+                gapBetweenTilesY += 200;
+                j = 0;
+            }
             var tile = tiles[UnityEngine.Random.Range(0, tiles.Capacity)];
-            var pos = grid.GetCellCenterWorld(grid.LocalToCell(new Vector3(player.transform.position.x + (gapBetweenTiles * i), player.transform.position.y, 1)));
+            var pos = grid.GetCellCenterWorld(grid.LocalToCell(new Vector3(player.transform.position.x + (gapBetweenTilesX * j), player.transform.position.y + gapBetweenTilesY, 1)));
             Instantiate(tile.celestialTile, pos, Quaternion.identity);
+            j++;
         }
         yield return null;  
     }

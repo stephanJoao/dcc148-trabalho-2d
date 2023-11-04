@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 071723ad3594bf2458049ee715d94694, type: 3}
-  m_Name: Tile7
+  m_Name: Tile8
   m_EditorClassIdentifier: 
-  celestialTile: {fileID: 5430437374807554947, guid: 95ca0f4ca9acdba4cba8bff4f03267e5, type: 3}
+  celestialTile: {fileID: 4239999261429110275, guid: d00d9871c1a23cf498839a32ca46b032, type: 3}
