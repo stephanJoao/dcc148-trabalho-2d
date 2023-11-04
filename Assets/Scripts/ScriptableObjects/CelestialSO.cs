@@ -7,5 +7,4 @@ public class CelestialSO : ScriptableObject
     public float mass;
     public float range;
     public Color color;
-    public float maxSpeedToDie;
 }

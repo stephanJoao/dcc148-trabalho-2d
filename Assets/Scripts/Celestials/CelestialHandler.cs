@@ -9,10 +9,9 @@ public class CelestialHandler : MonoBehaviour
     [SerializeField] Light light;
     private MeshRenderer meshRenderer;
 
-    private float size;
-    private float maxSize;
-    private float mass;
-    private float maxSpeedToDie;
+    [SerializeField] private float size;
+    [SerializeField] private float maxSize;
+    [SerializeField] private float mass;
 
     private void Start()
     {
@@ -23,7 +22,6 @@ public class CelestialHandler : MonoBehaviour
         mass = celestialSOSetup.celestialSO.mass;
         circleCollider2D.radius = celestialSOSetup.celestialSO.range;
         light.color = celestialSOSetup.celestialSO.color;
-        maxSpeedToDie = celestialSOSetup.celestialSO.maxSpeedToDie;
 
         transform.localScale = new Vector3(maxSize, maxSize, maxSize);
 
@@ -34,6 +32,7 @@ public class CelestialHandler : MonoBehaviour
         transform.localScale = new Vector3(size, size, size);    
     }
 
+    // Getters and Setters
     public float GetSize()
     {
         return size;
@@ -56,17 +55,7 @@ public class CelestialHandler : MonoBehaviour
     public void SetMass(float newMass)
     {
         mass = newMass;
-    }
-    
-    public float SetMaxSpeedToDie(float mass)
-    {
-        return maxSpeedToDie = mass * 50;
-    }
-    
-    public float GetMaxSpeedToDie()
-    {
-        return maxSpeedToDie;
-    }
+    }    
 }
 
 [System.Serializable]
