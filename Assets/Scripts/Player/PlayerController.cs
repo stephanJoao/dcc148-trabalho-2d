@@ -11,10 +11,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ParticleSystem[] collisionParticles;
     [SerializeField] Material[] particleMaterials;
 
+    [SerializeField] ParticleSystem explosionParticles;
+
     private float accelerationX;
     private float accelerationY;
     private float playerMaxMagnitude;
-    private float playerMinMagnitudePercentual;
 
     private float minimumImpulse;
 
@@ -26,7 +27,6 @@ public class PlayerController : MonoBehaviour
         accelerationX = 0;
         accelerationY = 0;
         playerMaxMagnitude = 80.0f;
-        playerMinMagnitudePercentual = 0.20f;
         minimumImpulse = 45.0f;
     }
 
@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         // collision with planet (destruction)
-        if (other.gameObject.tag == "PlanetObject")
+        if (other.gameObject.CompareTag("PlanetObject"))
         {
 			CelestialHandler celestialHandler = other.gameObject.GetComponentInParent<CelestialHandler>();
                         
@@ -83,7 +83,6 @@ public class PlayerController : MonoBehaviour
             {
                 totalImpulse += contact.normalImpulse;
             }
-            //Debug.Log(totalImpulse);
 
             // check minimum impulse 
             if (totalImpulse > minimumImpulse)
@@ -101,7 +100,9 @@ public class PlayerController : MonoBehaviour
                 // add score to player (rest of planet's mass)
                 GameManager.instance.AddScore(celestialHandler.GetMass());
                 // destroy planet
-                Destroy(celestialHandler.gameObject);
+                explosionParticles.GetComponent<Renderer>().material.SetColor("_Color", celestialHandler.GetColor()); 
+                explosionParticles.Play();
+                celestialHandler.gameObject.SetActive(false);
             }
 
 
@@ -120,7 +121,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionStay2D(Collision2D other)
     {
         // collision with sun (reduce score with time)
-        if (other.gameObject.tag == "SunObject")
+        if (other.gameObject.CompareTag("SunObject"))
         {
             CelestialHandler celestialHandler = other.gameObject.GetComponentInParent<CelestialHandler>();
             // reduce score by 0.3% of sun mass

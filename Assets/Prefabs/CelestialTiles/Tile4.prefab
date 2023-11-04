@@ -45,11 +45,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 415392307673540740, guid: 56e53b61948070448a29b4c22bca5d08, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 415392307673540740, guid: 56e53b61948070448a29b4c22bca5d08, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 33.1
+      value: 22.3
       objectReference: {fileID: 0}
     - target: {fileID: 415392307673540740, guid: 56e53b61948070448a29b4c22bca5d08, type: 3}
       propertyPath: m_LocalPosition.z
@@ -87,6 +87,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet4
       objectReference: {fileID: 0}
+    - target: {fileID: 3029465244917858918, guid: 56e53b61948070448a29b4c22bca5d08, type: 3}
+      propertyPath: sun
+      value: 
+      objectReference: {fileID: 7556580899581654198}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -107,11 +111,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 415392307673540740, guid: ecdd0e476c169a2469c69ed5c24760ab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 415392307673540740, guid: ecdd0e476c169a2469c69ed5c24760ab, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -25.1
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 415392307673540740, guid: ecdd0e476c169a2469c69ed5c24760ab, type: 3}
       propertyPath: m_LocalPosition.z
@@ -149,6 +153,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet3
       objectReference: {fileID: 0}
+    - target: {fileID: 1349178781170324745, guid: ecdd0e476c169a2469c69ed5c24760ab, type: 3}
+      propertyPath: sun
+      value: 
+      objectReference: {fileID: 7556580899581654198}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -169,7 +177,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 415392307673540740, guid: 0f4796e5547aed240a186ff509ea9008, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -57.3
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 415392307673540740, guid: 0f4796e5547aed240a186ff509ea9008, type: 3}
       propertyPath: m_LocalPosition.y
@@ -211,6 +219,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet5
       objectReference: {fileID: 0}
+    - target: {fileID: 1457653204773849905, guid: 0f4796e5547aed240a186ff509ea9008, type: 3}
+      propertyPath: sun
+      value: 
+      objectReference: {fileID: 7556580899581654198}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -231,11 +243,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 198989934835243753, guid: cc5e3a0bd5801af4c93e1cc2650e5882, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198989934835243753, guid: cc5e3a0bd5801af4c93e1cc2650e5882, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198989934835243753, guid: cc5e3a0bd5801af4c93e1cc2650e5882, type: 3}
       propertyPath: m_LocalPosition.z
@@ -278,6 +290,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc5e3a0bd5801af4c93e1cc2650e5882, type: 3}
+--- !u!1 &7556580899581654198 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1570708637866454225, guid: cc5e3a0bd5801af4c93e1cc2650e5882, type: 3}
+  m_PrefabInstance: {fileID: 9012293728214849639}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9210122024393998990 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 198989934835243753, guid: cc5e3a0bd5801af4c93e1cc2650e5882, type: 3}

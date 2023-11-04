@@ -45,11 +45,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 198989934835243753, guid: d89dd58632cb99446b0a7d3d6766b319, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198989934835243753, guid: d89dd58632cb99446b0a7d3d6766b319, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.5
+      value: 100.5
       objectReference: {fileID: 0}
     - target: {fileID: 198989934835243753, guid: d89dd58632cb99446b0a7d3d6766b319, type: 3}
       propertyPath: m_LocalPosition.z
@@ -92,6 +92,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d89dd58632cb99446b0a7d3d6766b319, type: 3}
+--- !u!1 &866918637528017535 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1570708637866454225, guid: d89dd58632cb99446b0a7d3d6766b319, type: 3}
+  m_PrefabInstance: {fileID: 1858771443000477358}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1948187879227563079 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 198989934835243753, guid: d89dd58632cb99446b0a7d3d6766b319, type: 3}
@@ -107,11 +112,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 415392307673540740, guid: ecdd0e476c169a2469c69ed5c24760ab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 34.6
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 415392307673540740, guid: ecdd0e476c169a2469c69ed5c24760ab, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -82.5
+      value: 54
       objectReference: {fileID: 0}
     - target: {fileID: 415392307673540740, guid: ecdd0e476c169a2469c69ed5c24760ab, type: 3}
       propertyPath: m_LocalPosition.z
@@ -149,6 +154,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet3
       objectReference: {fileID: 0}
+    - target: {fileID: 1349178781170324745, guid: ecdd0e476c169a2469c69ed5c24760ab, type: 3}
+      propertyPath: sun
+      value: 
+      objectReference: {fileID: 866918637528017535}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -169,7 +178,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 415392307673540740, guid: 0f4796e5547aed240a186ff509ea9008, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.8
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 415392307673540740, guid: 0f4796e5547aed240a186ff509ea9008, type: 3}
       propertyPath: m_LocalPosition.y
@@ -211,6 +220,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet5
       objectReference: {fileID: 0}
+    - target: {fileID: 1457653204773849905, guid: 0f4796e5547aed240a186ff509ea9008, type: 3}
+      propertyPath: sun
+      value: 
+      objectReference: {fileID: 866918637528017535}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -229,17 +242,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2801597097191974108}
     m_Modifications:
+    - target: {fileID: 1256719428814801401, guid: b91502b4597bbd34dba1f3363b39c6b7, type: 3}
+      propertyPath: sun
+      value: 
+      objectReference: {fileID: 866918637528017535}
     - target: {fileID: 2489305895275230814, guid: b91502b4597bbd34dba1f3363b39c6b7, type: 3}
       propertyPath: m_Name
       value: Planet1
       objectReference: {fileID: 0}
     - target: {fileID: 3641721733821804651, guid: b91502b4597bbd34dba1f3363b39c6b7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -122
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 3641721733821804651, guid: b91502b4597bbd34dba1f3363b39c6b7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 112
+      value: -36
       objectReference: {fileID: 0}
     - target: {fileID: 3641721733821804651, guid: b91502b4597bbd34dba1f3363b39c6b7, type: 3}
       propertyPath: m_LocalPosition.z

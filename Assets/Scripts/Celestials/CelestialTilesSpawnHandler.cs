@@ -30,7 +30,7 @@ public class CelestialTilesSpawnHandler : MonoBehaviour
         {
             if(i % 5 == 0)
             {
-                gapBetweenTilesY += 200;
+                gapBetweenTilesY += 300;
                 j = 0;
             }
             var tile = tiles[UnityEngine.Random.Range(0, tiles.Capacity)];

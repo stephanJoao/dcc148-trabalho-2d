@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 323533593975829238}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0021186254, y: 0.041666683, z: -3.5}
+  m_LocalPosition: {x: 0, y: 0, z: -3.5}
   m_LocalScale: {x: 0.070621476, y: 0.070621476, z: 0.070621476}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,8 +45,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.4433962, g: 0.09788179, b: 0.09788179, a: 1}
-  m_Intensity: 3
-  m_Range: 67.62
+  m_Intensity: 3000
+  m_Range: 300
   m_SpotAngle: 100
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -84,7 +84,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0
@@ -256,6 +256,9 @@ MonoBehaviour:
     celestialSO: {fileID: 11400000, guid: 0ded8bf1d70bfae469157c3771628465, type: 2}
   circleCollider2D: {fileID: 1377601005427478331}
   light: {fileID: 2351019594273143613}
+  size: 0
+  maxSize: 0
+  mass: 0
 --- !u!1 &7777078663327421187
 GameObject:
   m_ObjectHideFlags: 0
