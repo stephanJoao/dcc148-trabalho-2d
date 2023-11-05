@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
     private float minimumImpulse;
 	private AudioSource audioSource;
-	private AudioSource burning;
+	public AudioSource audioSourceExplosion;
 
     // Start is called before the first frame update
     void Start()
@@ -107,8 +107,9 @@ public class PlayerController : MonoBehaviour
                 GameManager.instance.AddScore(celestialHandler.GetMass());
                 // destroy planet
                 explosionParticles.GetComponent<Renderer>().material.SetColor("_Color", celestialHandler.GetColor()); 
-                explosionParticles.Play();
+                explosionParticles.Play();				
                 celestialHandler.gameObject.SetActive(false);
+				audioSourceExplosion.Play();
             }
 
 
