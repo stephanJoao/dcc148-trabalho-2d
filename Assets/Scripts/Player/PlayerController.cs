@@ -1,6 +1,7 @@
 
 using System;
 using UnityEngine;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -18,6 +19,8 @@ public class PlayerController : MonoBehaviour
     private float playerMaxMagnitude;
 
     private float minimumImpulse;
+	private AudioSource audioSource;
+	private AudioSource burning;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +31,10 @@ public class PlayerController : MonoBehaviour
         accelerationY = 0;
         playerMaxMagnitude = 80.0f;
         minimumImpulse = 45.0f;
+		
+		audioSource = GetComponent<AudioSource>();
+		audioSource.loop = true;
+		audioSource.Play();
     }
 
     // Update is called once per frame
@@ -74,7 +81,6 @@ public class PlayerController : MonoBehaviour
         {
 			CelestialHandler celestialHandler = other.gameObject.GetComponentInParent<CelestialHandler>();
                         
-            
             // calculate impulse of collision
             ContactPoint2D[] contacts = new ContactPoint2D[other.contactCount];
             other.GetContacts(contacts);
@@ -114,8 +120,11 @@ public class PlayerController : MonoBehaviour
                 collisionParticles[counter].Play();
                 counter++;
             }
+			
+			other.gameObject.GetComponent<AudioSource>().Play();
 
         }
+
     }
 
     private void OnCollisionStay2D(Collision2D other)
