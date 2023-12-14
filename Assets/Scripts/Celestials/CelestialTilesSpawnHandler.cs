@@ -34,7 +34,7 @@ public class CelestialTilesSpawnHandler : MonoBehaviour
                 j = 0;
             }
             var tile = tiles[UnityEngine.Random.Range(0, tiles.Capacity)];
-            var pos = grid.GetCellCenterWorld(grid.LocalToCell(new Vector3(player.transform.position.x + (gapBetweenTilesX * j), player.transform.position.y + gapBetweenTilesY, 1)));
+            var pos = grid.GetCellCenterWorld(grid.LocalToCell(new Vector3(player.transform.position.x + (gapBetweenTilesX * j)  + 500, player.transform.position.y + gapBetweenTilesY + 300, 1)));
             Instantiate(tile.celestialTile, pos, Quaternion.identity);
             j++;
         }

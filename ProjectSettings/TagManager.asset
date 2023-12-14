@@ -12,6 +12,8 @@ TagManager:
   - PauseScreenObject
   - ScoreTextObject
   - InitialTextObject
+  - CollisionParticles
+  - Background
   layers:
   - Default
   - TransparentFX

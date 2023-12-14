@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D playerRb;
     [SerializeField] private float acceleration;
+    
+    [SerializeField] GameObject background;
 
     [SerializeField] ParticleSystem[] collisionParticles;
     [SerializeField] Material[] particleMaterials;
@@ -26,7 +28,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
-        acceleration = 25.0f;
+        acceleration = 5000.0f;
         accelerationX = 0;
         accelerationY = 0;
         playerMaxMagnitude = 80.0f;
@@ -35,13 +37,15 @@ public class PlayerController : MonoBehaviour
 		audioSource = GetComponent<AudioSource>();
 		audioSource.loop = true;
 		audioSource.Play();
+
+        background = GameObject.FindGameObjectWithTag("Background");
     }
 
     // Update is called once per frame
     void Update()
     {
-        accelerationX = Input.GetAxis("Horizontal") * acceleration;
-        accelerationY = Input.GetAxis("Vertical") * acceleration;
+        accelerationX = Input.GetAxis("Horizontal") * acceleration * Time.deltaTime;
+        accelerationY = Input.GetAxis("Vertical") * acceleration * Time.deltaTime;
 
         playerRb.AddForce(new Vector2(accelerationX, accelerationY));
 
@@ -50,6 +54,8 @@ public class PlayerController : MonoBehaviour
         {
             playerRb.velocity = playerRb.velocity.normalized * playerMaxMagnitude;
         }
+
+        background.transform.position = new Vector3(transform.position.x, transform.position.y, background.transform.position.z);
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -60,7 +66,7 @@ public class PlayerController : MonoBehaviour
             CelestialHandler celestialHandler = other.GetComponentInParent<CelestialHandler>();
             Vector2 direction = (transform.position - other.transform.position).normalized;
 
-            playerRb.AddForce(-direction * celestialHandler.GetMass());
+            playerRb.AddForce(-direction * celestialHandler.GetMass() * Time.deltaTime * 30);
         }
 
         // collision with trigger range (gravity)
@@ -69,7 +75,7 @@ public class PlayerController : MonoBehaviour
             CelestialHandler celestialHandler = other.GetComponentInParent<CelestialHandler>();
             Vector2 direction = (transform.position - other.transform.position).normalized;
 
-            playerRb.AddForce(-direction * celestialHandler.GetMass());
+            playerRb.AddForce(-direction * celestialHandler.GetMass() * Time.deltaTime * 30);
         }
     }
 
